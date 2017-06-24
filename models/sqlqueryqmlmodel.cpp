@@ -1,4 +1,4 @@
-#include "sqlquerymodel.h"
+#include "sqlqueryqmlmodel.h"
 
 #include <QSqlRecord>
 #include <QDebug>
@@ -27,7 +27,7 @@ void SqlQueryQmlModel::setQuery(const QSqlQuery & query)
     QSqlQueryModel::setQuery( query );
 
     if (this->query().lastError().isValid())
-        qDebug() << "PMSqlQueryModel error:" << this->query().lastError().text();
+        qCritical() << "SqlQueryQmlModel error:" << this->query().lastError().text();
     else
         qDebug() << "Fetched rows" << QSqlQueryModel::rowCount();
 }
